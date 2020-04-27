@@ -57,7 +57,6 @@ function doDelete(){
 	if ("<%=edit%>"==2){
 		if(confirm("작성한 글을 삭제하시겠습니까?")){
 			location.href="/notice/NoticeDelete.do?nSeq=<%=CmmUtil.nvl(rDTO.getNotice_seq())%>";
-			
 		}
 		
 	}else if ("<%=edit%>"==3){

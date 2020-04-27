@@ -5,8 +5,13 @@
 
 	<!-- 게시판 리스트 쿼리 -->
 	<select id="getNoticeList" resultType="NoticeDTO">
-		SELECT N.NOTICE_SEQ, N.TITLE, N.NOTICE_YN, N.READ_CNT, U.USER_NAME, N.USER_ID,
-			   TO_CHAR(N.REG_DT, 'YYYY-MM-DD') AS REG_DT
+		SELECT 	N.NOTICE_SEQ
+				,N.TITLE
+				,N.NOTICE_YN
+				,N.READ_CNT
+				,U.USER_NAME
+				,N.USER_ID
+				,DATE_FORMAT(N.REG_DT, '%Y-%m-%d') AS REG_DT
 	      FROM NOTICE N, USER_INFO U
 	     WHERE N.USER_ID = U.USER_ID 
 	 	 ORDER BY N.NOTICE_YN, N.REG_DT DESC
@@ -16,19 +21,41 @@
 	<insert id="InsertNoticeInfo" parameterType="NoticeDTO">
 		INSERT INTO NOTICE
 			(
-				NOTICE_SEQ, TITLE, NOTICE_YN, CONTENTS, USER_ID, READ_CNT, 
-		      	REG_ID, REG_DT, CHG_ID, CHG_DT
+				NOTICE_SEQ
+				,TITLE
+				,NOTICE_YN
+				,CONTENTS
+				,USER_ID
+				,READ_CNT
+				,REG_ID
+				,REG_DT
+				,CHG_ID
+				,CHG_DT
 			)
 		VALUES(
-			(SELECT NVL(MAX(A.NOTICE_SEQ),0)+1 FROM NOTICE A),
-			#{title}, #{notice_yn}, #{contents}, #{user_id}, 0, #{user_id}, SYSDATE, #{user_id}, SYSDATE
+			(SELECT IFNULL(MAX(A.NOTICE_SEQ),0)+1 FROM NOTICE A)
+			,#{title}
+			,#{notice_yn}
+			,#{contents}
+			,#{user_id}
+			,0
+			,#{user_id}
+			,NOW()
+			,#{user_id}
+			,NOW()
 		)
 	</insert>
 	
 	<!-- 게시판 상세보기 쿼리 -->
 	<select id="getNoticeInfo" resultType="NoticeDTO">
-		SELECT N.NOTICE_SEQ, N.TITLE, N.NOTICE_YN, N.READ_CNT, U.USER_NAME, N.USER_ID,
-			   CONTENTS, TO_CHAR(N.REG_DT, 'YYYY-MM-DD') AS REG_DT
+		SELECT 	N.NOTICE_SEQ
+				,N.TITLE
+				,N.NOTICE_YN
+				,N.READ_CNT
+				,U.USER_NAME
+				,N.USER_ID
+				,CONTENTS
+				,DATE_FORMAT(N.REG_DT, '%Y-%m-%d') AS REG_DT
 	      FROM NOTICE N, USER_INFO U
 	     WHERE N.USER_ID = U.USER_ID 
 	       AND N.NOTICE_SEQ = #{notice_seq}
@@ -51,7 +78,7 @@
 			NOTICE_YN = #{notice_yn},
 			CONTENTS = #{contents},
 			CHG_ID = #{user_id},
-			CHG_DT = SYSDATE
+			CHG_DT = NOW()
 		WHERE
 			NOTICE_SEQ = #{notice_seq}	
 			
