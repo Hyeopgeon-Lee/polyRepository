@@ -1,0 +1,132 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!-- JAVA와 연결할 Mapper 파일 설정 -->
+<mapper namespace="poly.persistance.mapper.INlpMapper">
+
+	<!-- 단어 정보 가져오기 -->
+	<select id="getWord" parameterType="NlpDTO" resultType="NlpDTO">
+		SELECT 
+			WORD, WORD_ROOT, POLARITY
+		 FROM NLP_DICTIONARY
+		WHERE 1=1
+		
+		<if test='word.equals("ㄱ")'>		
+			<![CDATA[
+			AND WORD > '가' AND WORD <'깋'
+			]]>
+		</if>
+		
+		<if test='word.equals("ㄲ")'>		
+			<![CDATA[
+			AND WORD > '까' AND WORD <'낗'
+			]]>
+		</if>
+		
+		<if test='word.equals("ㄴ")'>		
+			<![CDATA[
+			AND WORD > '나' AND WORD <'닣'
+			]]>
+		</if>
+		
+		<if test='word.equals("ㄷ")'>		
+			<![CDATA[
+			AND WORD > '다' AND WORD <'딯'
+			]]>
+		</if>
+
+		
+		<if test='word.equals("ㄸ")'>		
+			<![CDATA[
+			AND WORD > '따' AND WORD <'띻'
+			]]>
+		</if>		
+		
+		<if test='word.equals("ㄹ")'>		
+			<![CDATA[
+			AND WORD > '라' AND WORD <'맇'
+			]]>
+		</if>
+		
+		<if test='word.equals("ㅁ")'>		
+			<![CDATA[
+			AND WORD > '마' AND WORD <'밓'
+			]]>
+		</if>
+		
+		<if test='word.equals("ㅂ")'>		
+			<![CDATA[
+			AND WORD > '바' AND WORD <'빟'
+			]]>
+		</if>
+		
+		<if test='word.equals("ㅃ")'>		
+			<![CDATA[
+			AND WORD > '빠' AND WORD <'삫'
+			]]>
+		</if>
+		
+		<if test='word.equals("ㅅ")'>		
+			<![CDATA[
+			AND WORD > '사' AND WORD <'싷'
+			]]>
+		</if>
+		
+		<if test='word.equals("ㅆ")'>		
+			<![CDATA[
+			AND WORD > '싸' AND WORD <'앃'
+			]]>
+		</if>
+		
+		
+		<if test='word.equals("ㅇ")'>		
+			<![CDATA[
+			AND WORD > '아' AND WORD <'잏'
+			]]>
+		</if>
+		
+		<if test='word.equals("ㅈ")'>		
+			<![CDATA[
+			AND WORD > '자' AND WORD <'짛'
+			]]>
+		</if>
+		
+		<if test='word.equals("ㅉ")'>		
+			<![CDATA[
+			AND WORD > '짜' AND WORD <'찧'
+			]]>
+		</if>
+		
+		<if test='word.equals("ㅊ")'>		
+			<![CDATA[
+			AND WORD > '차' AND WORD <'칳'
+			]]>
+		</if>
+		
+		<if test='word.equals("ㅋ")'>		
+			<![CDATA[
+			AND WORD > '카' AND WORD <'킿'
+			]]>
+		</if>
+		
+		
+		<if test='word.equals("ㅌ")'>		
+			<![CDATA[
+			AND WORD > '타' AND WORD <'팋'
+			]]>
+		</if>
+		
+		<if test='word.equals("ㅍ")'>		
+			<![CDATA[
+			AND WORD > '파' AND WORD <'핗'
+			]]>
+		</if>
+		
+		<if test='word.equals("ㅎ")'>		
+			<![CDATA[
+			AND WORD > '하' AND WORD <'힣'
+			]]>
+		</if>
+				
+	</select>
+</mapper>
+
