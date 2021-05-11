@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!-- JAVA와 연결할 Mapper 파일 설정 -->
+<mapper namespace="poly.persistance.mapper.IMelonMapper">
+
+	<!-- 멜론 노래 등록하기 -->
+	<insert id="insertSong" parameterType="MelonDTO">
+		INSERT INTO MELON_INFO
+		(
+			COLLECT_TIME,
+			SEQ,
+			SINGER,
+			SONG
+		)
+		VALUES(
+			#{collect_time},
+			(SELECT IFNULL(MAX(A.SEQ),0)+1 FROM
+			MELON_INFO A WHERE A.COLLECT_TIME = #{collect_time} ),
+			#{singer},
+			#{song}
+		)
+	</insert>
+
+	<!-- 멜론 노래 가져오기 -->
+	<select id="getSongList" resultType="MelonDTO">
+		SELECT 
+			COLLECT_TIME,
+			SEQ,
+			SINGER,
+			SONG
+		FROM MELON_INFO
+		ORDER BY COLLECT_TIME DESC, SEQ 
+	</select>
+
+	<!-- 가수별 노래 수 가져오기 -->
+	<select id="getSingerSongCnt" resultType="MelonDTO">
+		SELECT 
+			SINGER,
+			COUNT(SINGER) AS SINGERCNT
+		FROM MELON_INFO
+		GROUP BY SINGER
+		ORDER BY COUNT(SINGER) DESC 
+	</select>
+
+</mapper>
+
+
