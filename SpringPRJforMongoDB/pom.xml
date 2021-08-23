@@ -21,7 +21,7 @@
 		<dependency>
 			<groupId>org.jsoup</groupId>
 			<artifactId>jsoup</artifactId>
-			<version>1.12.1</version>
+			<version>1.14.2</version>
 		</dependency>
 
 		<!-- DTO를 맵으로 변환하기 위해 사용함 -->
