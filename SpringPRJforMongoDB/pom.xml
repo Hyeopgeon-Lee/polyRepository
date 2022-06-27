@@ -35,7 +35,7 @@
 		<dependency>
 			<groupId>org.mongodb</groupId>
 			<artifactId>mongo-java-driver</artifactId>
-			<version>3.11.1</version>
+			<version>3.11.3</version>
 		</dependency>
 
 		<!-- MongoDB와 스프링 프레임워크와의 연동을 위해 추가 -->
