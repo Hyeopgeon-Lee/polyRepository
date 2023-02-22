@@ -227,7 +227,7 @@
 		<dependency>
 			<groupId>commons-fileupload</groupId>
 			<artifactId>commons-fileupload</artifactId>
-			<version>1.3.3</version>
+			<version>1.5</version>
 		</dependency>
 
 		<!-- JSP에 JSTL 사용을 위한 외부라이브러리 -->
